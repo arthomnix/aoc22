@@ -9,5 +9,12 @@ pub(crate) fn part2(input: String) {
 }
 
 fn get_sums(input: String) -> Vec<i32> {
-    input.split("\n\n").map(|e| e.split("\n").map(|e| e.parse::<i32>().unwrap()).sum::<i32>()).collect()
+    input
+        .split("\n\n")
+        .map(|e| {
+            e.split("\n")
+                .map(|e| e.parse::<i32>().unwrap())
+                .sum::<i32>()
+        })
+        .collect()
 }

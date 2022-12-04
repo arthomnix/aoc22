@@ -12,14 +12,14 @@ fn main() {
             Err(_) => {
                 help();
                 return;
-            },
+            }
         };
         let part: i32 = match args[2].parse() {
             Ok(n) => n,
             Err(_) => {
                 help();
                 return;
-            },
+            }
         };
 
         let input = std::fs::read_to_string(&args[3]).unwrap();
@@ -42,7 +42,9 @@ fn main() {
             _ => unimplemented!(),
         };
         function(input);
-    } else { help(); }
+    } else {
+        help();
+    }
 }
 
 fn help() {

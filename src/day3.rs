@@ -34,8 +34,8 @@ impl FromStr for Rucksack {
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         Ok(Self {
-            comp1: s[0 .. s.len() / 2].chars().collect::<Vec<char>>(),
-            comp2: s[s.len() / 2 .. s.len()].chars().collect::<Vec<char>>(),
+            comp1: s[0..s.len() / 2].chars().collect::<Vec<char>>(),
+            comp2: s[s.len() / 2..s.len()].chars().collect::<Vec<char>>(),
         })
     }
 }
@@ -68,31 +68,38 @@ impl ElfGroup<'_> {
 }
 
 pub(crate) fn part1(input: String) {
-    println!("{}", input
-        .split("\n")
-        .map(|e| e.parse::<Rucksack>().unwrap().common_item_priority() as usize)
-        .sum::<usize>()
+    println!(
+        "{}",
+        input
+            .split("\n")
+            .map(|e| e.parse::<Rucksack>().unwrap().common_item_priority() as usize)
+            .sum::<usize>()
     );
 }
 
 pub(crate) fn part2(input: String) {
     let mut ctr = 1;
-    println!("{}", input
-        .split(|c| {
-            let mut res = false;
-            if c == '\n' {
-                res = ctr % 3 == 0;
-                ctr += 1;
-            }
-            res
-        })
-        .map(|e| {
-            let rucksacks = e.split("\n")
-                .map( |e| e.parse::<Rucksack>().unwrap())
-                .collect::<Vec<Rucksack>>();
-            ElfGroup {
-                rucksacks: rucksacks.as_slice().try_into().unwrap(),
-            }.common_item_priority() as usize
-        }).sum::<usize>()
+    println!(
+        "{}",
+        input
+            .split(|c| {
+                let mut res = false;
+                if c == '\n' {
+                    res = ctr % 3 == 0;
+                    ctr += 1;
+                }
+                res
+            })
+            .map(|e| {
+                let rucksacks = e
+                    .split("\n")
+                    .map(|e| e.parse::<Rucksack>().unwrap())
+                    .collect::<Vec<Rucksack>>();
+                ElfGroup {
+                    rucksacks: rucksacks.as_slice().try_into().unwrap(),
+                }
+                .common_item_priority() as usize
+            })
+            .sum::<usize>()
     );
 }
