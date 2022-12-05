@@ -39,10 +39,19 @@ impl FromStr for MoveInstruction {
 
 fn both_parts(input: String, is_cratemover_9001: bool) {
     let vec: Vec<&str> = input.split("\n\n").collect();
-    let moves: Vec<MoveInstruction> = vec[1].split("\n").map(|e| e.parse::<MoveInstruction>().unwrap()).collect();
+    let moves: Vec<MoveInstruction> = vec[1]
+        .split("\n")
+        .map(|e| e.parse::<MoveInstruction>().unwrap())
+        .collect();
 
     let mut stack_lines: Vec<&str> = vec[0].split("\n").collect();
-    let num_stacks: usize = stack_lines.pop().unwrap().split(" ").map(|e| e.parse::<usize>().unwrap_or_default()).max().unwrap();
+    let num_stacks: usize = stack_lines
+        .pop()
+        .unwrap()
+        .split(" ")
+        .map(|e| e.parse::<usize>().unwrap_or_default())
+        .max()
+        .unwrap();
     stack_lines.reverse();
 
     let mut stacks: Vec<Vec<char>> = vec![vec![]; num_stacks];
