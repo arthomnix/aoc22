@@ -19,6 +19,7 @@ mod day18;
 mod day19;
 mod day20;
 mod day21;
+mod day22;
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
@@ -64,6 +65,7 @@ fn main() {
                 19 => day19::part1,
                 20 => day20::part1,
                 21 => day21::part1,
+                22 => day22::part1,
                 _ => unimplemented!(),
             },
             2 => match day {
@@ -88,6 +90,7 @@ fn main() {
                 19 => day19::part2,
                 20 => day20::part2,
                 21 => day21::part2,
+                22 => day22::part2,
                 _ => unimplemented!(),
             },
             _ => unimplemented!(),
